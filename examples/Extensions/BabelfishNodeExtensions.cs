@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Text;
 using Babelfish;
 
 namespace service.tests.Extensions
@@ -40,15 +38,6 @@ namespace service.tests.Extensions
                             throw;
                     }
                 }
-            }
-        }
-
-        public static string ToXmlString(this INode node)
-        {
-            using(var ms = new MemoryStream())
-            {
-                Babelfish.Converters.XmlConverter.ConvertToXmlDocument(node).Save(ms);
-                return Encoding.UTF8.GetString(ms.GetBuffer());
             }
         }
     }

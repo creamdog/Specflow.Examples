@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -22,12 +20,6 @@ namespace service.tests
             WebServiceWsdlUrl = wsdl;
         }
 
-        [Given("the number (.*)")]
-        public void LKjklsdhkfh(double num)
-        {
-            
-        }
-
         [When("I authenticate using basic authentication with the username (.*) and password (.*) and the domain (.*)")]
         public void AuthenticateUsingBasicAuthentication(string username, string password, string domain)
         {
@@ -46,12 +38,6 @@ namespace service.tests
             FormsAuthenticationUrl = url;
             Username = username;
             Password = password;
-        }
-
-        [When("I strore the result in (.*)")]
-        public void StoreTheResultIn(string key)
-        {
-            ScenarioContext.Current[key] = WebServiceMethodResult;
         }
 
         [When("I call the method (.*) with no parameters")]

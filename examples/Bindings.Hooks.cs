@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using service.tests.Net.Service;
 using TechTalk.SpecFlow;
 using System.Linq;
@@ -16,26 +15,11 @@ namespace service.tests
             
             ScenarioContext.Current.Clear();
         }
-
-        [BeforeScenario]
-        public static void Kalle()
-        {
-            //ScenarioContext.Current.
-        }
     }
 
     [Binding]
     public class Converters
     {
-
-        [StepArgumentTransformation("(.*)")]
-        public string TransformDoubleAAA(object expr)
-        {
-            Console.WriteLine("lksdklfjsdlJKKJH!!!!");
-            //return Convert.ToDouble(expr);
-            return null;
-        }
-
         [StepArgumentTransformation]
         public double TransformDouble(string expr)
         {

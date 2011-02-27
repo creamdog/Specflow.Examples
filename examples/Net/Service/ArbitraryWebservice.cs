@@ -4,11 +4,9 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Web.Services.Description;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
 using System.Linq;
 using service.tests.Extensions;
 
@@ -109,11 +107,13 @@ namespace service.tests.Net.Service
 
             foreach (var p in method.GetParameters())
             {
-                if(!args.Any(a => a.Name == p.Name))
+                var param = p;
+
+                if (!args.Any(a => a.Name == param.Name))
                     throw new ArgumentException("expected parameter not supplied", p.Name);
-                
-                methodParams.Add(args.Where(a => a.Name == p.Name)
-                    .Select(a => a.Value.Convert(p.ParameterType))
+
+                methodParams.Add(args.Where(a => a.Name == param.Name)
+                    .Select(a => a.Value.Convert(param.ParameterType))
                     .FirstOrDefault());
             }
 
@@ -122,7 +122,7 @@ namespace service.tests.Net.Service
 
         public void Dispose()
         {
-            this._service.Dispose();
+            _service.Dispose();
         }
 
         public class MethodParamDescriptor

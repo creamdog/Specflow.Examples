@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,7 +15,7 @@ namespace service.tests.Extensions
                 if (obj is string && !type.GetNestedTypes().Any(t => t == typeof(ValueType)))
                     return new JsonSerializer().Deserialize(new JsonTextReader(new StringReader((string)obj)), type);
             }
-            catch(JsonReaderException ex)
+            catch(JsonReaderException)
             {
                 var serializedResult = new StringBuilder();
                 new JsonSerializer().Serialize(new StringWriter(serializedResult), obj);
